@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>IT Курс - Начальный уровень</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background: #0f172a; color: white; overflow-x: hidden; }
+
+/* HEADER */
+header {
+  display: flex; justify-content: space-between; align-items:center; padding: 20px 40px;
+  background: rgba(0,0,0,0.4); position: sticky; top: 0; z-index: 100;
+}
+nav a { margin-left: 20px; color: white; text-decoration: none; transition: 0.3s; }
+nav a:hover { color: #38bdf8; }
+.language-switch select { padding:5px 10px; border-radius:5px; border:none; background:#38bdf8; color:white; font-weight:bold; cursor:pointer; transition:0.3s; }
+.language-switch select:hover { background:#a78bfa; }
+
+/* HERO */
+.hero { text-align:center; padding:100px 20px; }
+.hero h1 { font-size:50px; background: linear-gradient(90deg, #38bdf8, #a78bfa); -webkit-background-clip: text; color: transparent; }
+.hero p { margin:20px 0; font-size:18px; }
+
+/* BUTTON */
+.btn { padding:12px 25px; border-radius:30px; border:none; background:linear-gradient(90deg,#38bdf8,#a78bfa); color:white; cursor:pointer; transition:0.3s; margin:10px;}
+.btn:hover { transform:scale(1.1); box-shadow:0 0 20px #38bdf8; }
+
+/* VIDEO GRID */
+.videos { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; margin-top:30px; }
+.videos video { width:100%; max-width:300px; border-radius:15px; }
+
+/* SECTIONS */
+section { padding:70px 20px; max-width:1100px; margin:auto; }
+
+/* CARDS */
+.cards { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
+.card { flex:1; min-width:250px; padding:25px; border-radius:20px; background:#1e293b; transition:0.4s; }
+.card:hover { transform: translateY(-10px) scale(1.05); }
+
+/* REVIEWS */
+.reviews { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+.review { background:#1e293b; padding:20px; border-radius:15px; flex:1; min-width:250px; }
+
+/* ANIMATION */
+.fade { opacity:0; transform:translateY(30px); transition:1s; }
+.fade.show { opacity:1; transform:translateY(0); }
+
+/* FOOTER */
+footer { text-align:center; padding:30px; background:#020617; }
+</style>
+</head>
+<body>
+
+<header>
+  <h2>💻 <span data-key="header-title">IT Курс</span></h2>
+  <nav>
+   
+    <a href="#about" data-key="nav-about">О курсе</a>
+    <a href="#program" data-key="nav-program">Программа</a>
+     <div class="language-switch">
+      <select id="language-selector">
+        <option value="ru">🇷🇺 Русский</option>
+        <option value="uz">🇺🇿 Узбекский</option>
+        <option value="en">🇺🇸 English</option>
+      </select>
+    </div>
+    <a href="#reviews" data-key="nav-reviews">Отзывы</a>
+    <a href="#about-me" data-key="nav-about-me">О себе</a>
+    <a href="#contact" data-key="nav-contact">Связь</a>
+  </nav>
+</header>
+
+<div class="hero fade">
+  <h1 data-key="hero-title">Бесплатный IT курс 🚀</h1>
+  <p data-key="hero-desc">Начальный уровень. Онлайн 3 раза в неделю. Уроки 2 часа (18:00-20:00).</p>
+
+  <button class="btn" onclick="scrollToSection()" data-key="btn-start">Начать</button>
+  <button class="btn" onclick="openTelegram()" data-key="btn-telegram">Telegram</button>
+
+  <!-- Видео мини-блоки -->
+  <div class="videos">
+    <video autoplay muted loop src="IMG_5926.MOV"></video>
+    <video autoplay muted loop src="IMG_5926.MOV"></video>
+  </div>
+</div>
+
+<section id="about" class="fade">
+  <h2 data-key="about-title">📚 О курсе</h2>
+  <p data-key="about-desc">Это начальный курс программирования. Мы изучаем только базу HTML, CSS и JavaScript. Занятия проходят онлайн бесплатно. Вы научитесь создавать первые сайты и проекты, понимать код, работать с логикой и стилями.</p>
+</section>
+
+<section id="program" class="fade">
+  <h2 data-key="program-title">🔥 Чему вы научитесь</h2>
+  <div class="cards">
+    <div class="card"><h3>🌐 HTML</h3><p data-key="html-desc">Структура сайтов, теги, ссылки, таблицы, формы.</p></div>
+    <div class="card"><h3>🎨 CSS</h3><p data-key="css-desc">Стили, цвета, шрифты, анимации, макеты.</p></div>
+    <div class="card"><h3>⚡ JavaScript</h3><p data-key="js-desc">Основы логики, события, кнопки, простые проекты.</p></div>
+  </div>
+</section>
+
+<section class="fade">
+  <h2 data-key="schedule-title">⏰ Расписание</h2>
+  <p data-key="schedule-desc">📅 3 раза в неделю<br>⏱ Время: 18:00 – 20:00<br>💻 Онлайн</p>
+</section>
+
+<section id="reviews" class="fade">
+  <h2 data-key="reviews-title">💬 Отзывы учеников</h2>
+  <div class="reviews">
+    <div class="review">
+      <h4 data-key="review1-name">👩 Алина, 14 лет</h4>
+      <p data-key="review1-text">Раньше не понимала код, теперь могу сделать свой первый сайт. Занятия интересные, все объясняется понятно. Рекомендую друзьям!</p>
+    </div>
+    <div class="review">
+      <h4 data-key="review2-name">👨 Даниил, 15 лет</h4>
+      <p data-key="review2-text">Курс реально помогает начать с нуля. Практические задания делают обучение увлекательным. Уже могу создавать кнопки и формы!</p>
+    </div>
+    <div class="review">
+      <h4 data-key="review3-name">👩 София, 13 лет</h4>
+      <p data-key="review3-text">Очень понравился курс. Онлайн удобно и понятно. Уже создала свой первый проект — мини-сайт!</p>
+    </div>
+    <div class="review">
+      <h4 data-key="review4-name">👨 Тимур, 16 лет</h4>
+      <p data-key="review4-text">Сначала было сложно, но с помощью уроков стало понятно. Мне понравилось, что сразу делаем реальные проекты, а не только теорию.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:30px; text-align:center;">
+    <video autoplay muted loop style="max-width:400px; border-radius:15px;">
+      <source src="https://cdn.coverr.co/videos/coverr-students-learning-1577/1080p.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<section id="about-me" class="fade">
+  <h2 data-key="about-me-title">🙋‍♀️ О себе</h2>
+  <p data-key="about-me-desc">
+    Привет! Меня зовут <strong>Ильмира</strong>, мне 15 лет. Возможно, тебе кажется, что я обычный подросток, но на самом деле я увлечена программированием и уже имею опыт в HTML, CSS и JavaScript.  
+    Даже на начальном этапе я могу создавать простые сайты, добавлять стили, анимации и логику с кнопками.  
+
+    Я хочу делиться своими знаниями и помогать другим начинать с нуля. Моя цель — показать, что программирование может быть интересным и доступным, даже если тебе 15 лет или чуть больше.  
+
+    На моих занятиях ты научишься основам веб-разработки: создавать структуру сайта с HTML, красиво оформлять его с CSS и оживлять с помощью JavaScript.  
+    Я понимаю, как сложно бывает с первого раза понять код, поэтому объясняю всё понятными словами, шаг за шагом, чтобы обучение было лёгким и увлекательным.  
+
+    Даже будучи подростком, я уверена, что могу помочь тебе сделать первые реальные проекты. Этот курс — не просто теория, а практика, интересные задания и творческое развитие.  
+    Присоединяйся, и ты увидишь, что программирование — это реально круто, а создавать сайты можно уже сейчас!
+  </p>
+</section>
+
+<section id="contact" class="fade">
+  <h2 data-key="contact-title">📩 Связаться</h2>
+  <p data-key="contact-desc">Записаться на курс или задать вопрос:</p>
+  <button class="btn" onclick="sendMail()" data-key="btn-mail">📧 Почта</button>
+  <button class="btn" onclick="openTelegram()" data-key="btn-telegram2">💬 Telegram</button>
+</section>
+
+<footer>
+  <p>© 2026 <span data-key="footer-text">IT курс | Ильмира 💙</span></p>
+</footer>
+
+<script>
+function scrollToSection(){ document.getElementById("about").scrollIntoView({ behavior:"smooth" }); }
+function openTelegram(){ window.open("https://t.me/Imiri3009","_blank"); }
+function sendMail(){ window.location.href = "mailto:Ititski30@gmail.com?subject=Запись на курс"; }
+
+/* Анимация появления блоков при скролле */
+const items = document.querySelectorAll(".fade");
+window.addEventListener("scroll", () => {
+  items.forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add("show");
+  });
+});
+
+/* Перевод текста */
+const translations = {
+  "ru": {
+    "header-title":"IT Курс","nav-about":"О курсе","nav-program":"Программа","nav-reviews":"Отзывы","nav-about-me":"О себе","nav-contact":"Связь",
+    "hero-title":"Бесплатный IT курс 🚀","hero-desc":"Начальный уровень. Онлайн 3 раза в неделю. Уроки 2 часа (18:00-20:00).",
+    "btn-start":"Начать","btn-telegram":"Telegram","btn-telegram2":"Telegram","btn-mail":"📧 Почта",
+    "about-title":"📚 О курсе","about-desc":"Это начальный курс программирования. Мы изучаем только базу HTML, CSS и JavaScript. Занятия проходят онлайн бесплатно. Вы научитесь создавать первые сайты и проекты, понимать код, работать с логикой и стилями.",
+    "program-title":"🔥 Чему вы научитесь","html-desc":"Структура сайтов, теги, ссылки, таблицы, формы.","css-desc":"Стили, цвета, шрифты, анимации, макеты.","js-desc":"Основы логики, события, кнопки, простые проекты.",
+    "schedule-title":"⏰ Расписание","schedule-desc":"📅 3 раза в неделю<br>⏱ Время: 18:00 – 20:00<br>💻 Онлайн",
+    "reviews-title":"💬 Отзывы учеников","review1-name":"👩 Алина, 14 лет","review1-text":"Раньше не понимала код, теперь могу сделать свой первый сайт. Занятия интересные, все объясняется понятно. Рекомендую друзьям!","review2-name":"👨 Даниил, 15 лет","review2-text":"Курс реально помогает начать с нуля. Практические задания делают обучение увлекательным. Уже могу создавать кнопки и формы!","review3-name":"👩 София, 13 лет","review3-text":"Очень понравился курс. Онлайн удобно и понятно. Уже создала свой первый проект — мини-сайт!","review4-name":"👨 Тимур, 16 лет","review4-text":"Сначала было сложно, но с помощью уроков стало понятно. Мне понравилось, что сразу делаем реальные проекты, а не только теорию.",
+    "about-me-title":"🙋‍♀️ О себе","about-me-desc":"Привет! Меня зовут Ильмира, мне 15 лет. Возможно, тебе кажется, что я обычный подросток, но на самом деле я увлечена программированием и уже имею опыт в HTML, CSS и JavaScript. Даже на начальном этапе я могу создавать простые сайты, добавлять стили, анимации и логику с кнопками. Я хочу делиться своими знаниями и помогать другим начинать с нуля. Моя цель — показать, что программирование может быть интересным и доступным, даже если тебе 15 лет или чуть больше. На моих занятиях ты научишься основам веб-разработки: создавать структуру сайта с HTML, красиво оформлять его с CSS и оживлять с помощью JavaScript. Я понимаю, как сложно бывает с первого раза понять код, поэтому объясняю всё понятными словами, шаг за шагом, чтобы обучение было лёгким и увлекательным. Даже будучи подростком, я уверена, что могу помочь тебе сделать первые реальные проекты. Этот курс — не просто теория, а практика, интересные задания и творческое развитие. Присоединяйся, и ты увидишь, что программирование — это реально круто, а создавать сайты можно уже сейчас!",
+    "contact-title":"📩 Связаться","contact-desc":"Записаться на курс или задать вопрос:","footer-text":"IT курс | Ильмира 💙"
+  },
+  "en": {
+    "header-title":"IT Course","nav-about":"About","nav-program":"Program","nav-reviews":"Reviews","nav-about-me":"About me","nav-contact":"Contact",
+    "hero-title":"Free IT Course 🚀","hero-desc":"Beginner level. Online 3 times a week. Lessons 2 hours (6pm-8pm).",
+    "btn-start":"Start","btn-telegram":"Telegram","btn-telegram2":"Telegram","btn-mail":"📧 Mail",
+    "about-title":"📚 About the course","about-desc":"This is a beginner programming course. We only study the basics of HTML, CSS and JavaScript. Classes are free online. You will learn to create your first websites and projects, understand code, work with logic and styles.",
+    "program-title":"🔥 What you will learn","html-desc":"Website structure, tags, links, tables, forms.","css-desc":"Styles, colors, fonts, animations, layouts.","js-desc":"Basics of logic, events, buttons, simple projects.",
+    "schedule-title":"⏰ Schedule","schedule-desc":"📅 3 times a week<br>⏱ Time: 6pm – 8pm<br>💻 Online",
+    "reviews-title":"💬 Student reviews","review1-name":"👩 Alina, 14","review1-text":"Before I didn't understand code, now I can make my first website. Lessons are interesting, everything is explained clearly. I recommend to friends!","review2-name":"👨 Daniil, 15","review2-text":"The course really helps to start from scratch. Practical tasks make learning fun. I can already create buttons and forms!","review3-name":"👩 Sofia, 13","review3-text":"I really liked the course. Online is convenient and clear. Already created my first project — mini-site!","review4-name":"👨 Timur, 16","review4-text":"At first it was difficult, but with the lessons it became clear. I liked that we immediately make real projects, not only theory.",
+    "about-me-title":"🙋‍♀️ About me","about-me-desc":"Hi! My name is Ilmira, I'm 15. You may think I'm just a normal teen, but I'm passionate about programming and already have experience in HTML, CSS, and JavaScript. Even at the beginner stage, I can create simple websites, add styles, animations and logic with buttons. I want to share my knowledge and help others start from scratch. My goal is to show that programming can be interesting and accessible, even if you're 15 or a bit older. In my lessons you'll learn the basics of web development: creating site structure with HTML, styling it beautifully with CSS, and making it interactive with JavaScript. I explain everything step by step so learning is easy and fun. Even as a teenager, I am confident I can help you make your first real projects. This course is not just theory, but practice, fun tasks, and creative development. Join us and see that programming is really cool and making websites is possible now!",
+    "contact-title":"📩 Contact","contact-desc":"Sign up for the course or ask a question:","footer-text":"IT Course | Ilmira 💙"
+  },
+  "uz": {
+    "header-title":"IT Kursi","nav-about":"Kurs haqida","nav-program":"Dastur","nav-reviews":"Fikrlar","nav-about-me":"Men haqimda","nav-contact":"Bog‘lanish",
+    "hero-title":"Bepul IT kurs 🚀","hero-desc":"Boshlang‘ich daraja. Haftada 3 marta onlayn. Darslar 2 soat (18:00-20:00).",
+    "btn-start":"Boshlash","btn-telegram":"Telegram","btn-telegram2":"Telegram","btn-mail":"📧 Pochta",
+    "about-title":"📚 Kurs haqida","about-desc":"Bu boshlang‘ich dasturlash kursi. Faqat HTML, CSS va JavaScript asoslarini o‘rganamiz. Darslar bepul va onlayn. Birinchi sayt va loyihalarni yaratishni, kodni tushunishni, mantiq va stillar bilan ishlashni o‘rganasiz.",
+    "program-title":"🔥 Nimalarni o‘rganasiz","html-desc":"Sayt tuzilmasi, teglar, havolalar, jadvallar, formalar.","css-desc":"Stil, ranglar, shriftlar, animatsiyalar, tartiblar.","js-desc":"Mantiq asoslari, hodisalar, tugmalar, oddiy loyihalar.",
+    "schedule-title":"⏰ Jadval","schedule-desc":"📅 Haftada 3 marta<br>⏱ Vaqt: 18:00 – 20:00<br>💻 Onlayn",
+    "reviews-title":"💬 O‘quvchilar fikrlari","review1-name":"👩 Alina, 14","review1-text":"Avval kodni tushunmas edim, hozir esa birinchi sayt yaratdim. Darslar qiziqarli, hamma narsa tushunarli. Do‘stlarga tavsiya qilaman!","review2-name":"👨 Daniil, 15","review2-text":"Kurs haqiqatan ham boshlang‘ichdan boshlashga yordam beradi. Amaliy vazifalar o‘qishni qiziqarli qiladi. Endi tugmalar va formalarni yaratishim mumkin!","review3-name":"👩 Sofia, 13","review3-text":"Kurs juda yoqdi. Onlayn qulay va tushunarli. Birinchi mini-sayt loyihamni yaratdim!","review4-name":"👨 Timur, 16","review4-text":"Boshida qiyin edi, lekin darslar bilan tushunarli bo‘ldi. Darhol real loyihalar yaratish yoqdi.",
+    "about-me-title":"🙋‍♀️ Men haqimda","about-me-desc":"Salom! Mening ismim Ilmira, men 15 yoshdaman. Sizga oddiy o‘smirdek tuyulishi mumkin, lekin men dasturlashga qiziqaman va HTML, CSS va JavaScript bo‘yicha tajribam bor. Hatto boshlang‘ich bosqichda ham men oddiy saytlar yaratish, stil va animatsiyalar qo‘shish va tugmalar bilan ishlashni bilaman. Bilimlarimni boshqalar bilan bo‘lishishni va ularni boshlang‘ichdan boshlashga yordam berishni istayman. Mening maqsadim – dasturlash qiziqarli va mavjud bo‘lishi mumkinligini ko‘rsatish, hatto siz 15 yoshda yoki biroz kattaroq bo‘lsangiz ham. Darslarimda siz veb-ishlab chiqish asoslarini o‘rganasiz: HTML orqali sayt tuzilmasini yaratish, CSS orqali chiroyli bezash va JavaScript bilan interaktiv qilish. Men hamma narsani bosqichma-bosqich tushunarli qilib tushuntiraman, shunda o‘rganish oson va qiziqarli bo‘ladi. Hatto o‘smir bo‘lsam ham, sizga birinchi real loyihalaringizni yaratishda yordam bera olaman. Ushbu kurs faqat nazariya emas, balki amaliyot, qiziqarli vazifalar va ijodiy rivojlanishdir. Qo‘shiling va dasturlash juda ajoyibligini va sayt yaratish mumkinligini ko‘ring!",
+    "contact-title":"📩 Bog‘lanish","contact-desc":"Kursga yozilish yoki savol berish:","footer-text":"IT Kursi | Ilmira 💙"
+  }
+};
+
+const languageSelector = document.getElementById("language-selector");
+languageSelector.addEventListener("change", () => {
+  const lang = languageSelector.value;
+  document.querySelectorAll("[data-key]").forEach(el => {
+    const key = el.getAttribute("data-key");
+    if(translations[lang][key]) el.innerHTML = translations[lang][key];
+  });
+});
+</script>
+
+</body>
+</html>
